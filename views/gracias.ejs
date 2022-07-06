@@ -1,0 +1,24 @@
+<%-include('templates/init.ejs')%>
+<%-include('templates/menu.ejs')%>
+<div class="container">
+    <div class="row mt-5 mb-5 align-items-center">
+        <div class="col">
+            <h1 class="mb-5">Gracias!</h1>
+            <h3>Tu cuenta ya ha sido registrada. Agradecemos tu preferencia.</h3>
+        </div>
+        <div class="col">
+            <img class="img-fluid" src="img/guia.png">
+        </div>
+    </div>
+</div>
+<script>
+    document.addEventListener("load", ()=>
+    {
+        setTimeout();
+    });
+    setTimeout(()=>
+    {
+        window.location.href="/";
+    }, 2000);
+</script>
+<%-include('templates/end.ejs')%>

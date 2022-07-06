@@ -1,0 +1,31 @@
+<%-include('templates/init.ejs')%>
+<%-include('templates/menu.ejs')%>
+<div class="container text-center mt-5 pt-5 mb-5 pb-5">
+    <h1>MaidCorp</h1>
+    <p>
+        Somos una compania de soluciones tecnologias para todo tipo de problemas. Desde creacion de productos muy especificos para un cliente en particular, 
+        asi como algunos enfocados en atender las necesidades del publico en general.
+    </p>
+    <div class="row mt-4">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Contactanos</h3>
+                </div>
+                <form>
+                    <div class="card-body">
+                        <input type="text" class="form-control mb-3" placeholder="Nombre" name="name">
+                        <input type="email" class="form-control mb-3" placeholder="Correo electronico" name="email">
+                        <textarea class="form-control" placeholder="Escribe tu mensaje aqui..." name="message"></textarea>
+                    </div>
+                    <div class="card-footer">
+                        <button type="submit" class="btn btn-outline-dark">Enviar mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+<%-include('templates/end.ejs')%>

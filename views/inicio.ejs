@@ -1,0 +1,78 @@
+<%-include('templates/init.ejs')%>
+<%-include('templates/menu.ejs')%>
+<div class="container">
+    <div class="row align-items-center animate__animated animate__backInUp justify-content-md-center mb-5">
+        <div class="col col-sm-6">
+            <h1>Bienvenido a MaidCorp</h1>
+            <h4>Para tu problema, tenemos la solucion</h4>
+            <button type="button" class="btn btn-lg btn-dark mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                Registrate ahora
+            </button>
+        </div>
+        <div class="col col-sm-6">
+            <img class="img-fluid" src="img/icono.png">
+        </div>
+    </div>
+    <div class="text-center mb-5 pb-5" data-aos="fade-down">
+        <h3 class="mb-4">Nuestros productos</h3>    
+        <div class="text-start">
+            <div class="card mb-4 border-light" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="img/guia.png" class="img-fluid">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">DoorMaid</h5>
+                            <div class="card-text">Timbre inteligente con altas capacidades de crecimiento en el mercado</div>
+                            <a class="btn btn-outline-dark mt-3" href="/producto/doormaid">Comprar ahora</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-end">
+            <div class="card mb-4 border-light" data-aos="fade-up" data-aos-anchor-placement="top-center">
+                <div class="row g-0">
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">ServMaid</h5>
+                            <div class="card-text">Unidad punto de venta, agiliza tu negocio, vende mas que nunca.</div>
+                            <a class="btn btn-outline-dark mt-3" href="/producto/servmaid">Comprar ahora</a>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="img/guia.png" class="img-fluid">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registro</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+            <form method="post" action="/signUp">
+                <div class="modal-body">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" pattern=".+@gmail.com">
+                        <label for="floatingInput">Correo electronico</label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password" minlength="8">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    <button type="submit" class="btn btn-primary">Finalizar registro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<%-include('templates/end.ejs')%>

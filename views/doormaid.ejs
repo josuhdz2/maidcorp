@@ -1,0 +1,122 @@
+<%-include('templates/init.ejs')%>
+<%-include('templates/menu.ejs')%>
+<style type="text/CSS">
+    button[aria-selected="true"]{
+        background-color: black;
+        color: white;
+    }
+    button[aria-selected="true"]:hover{
+        color: white;
+    }
+    button[aria-selected="true"]:visited{
+        border-color: grey;
+    }
+    button[aria-selected="false"]{
+        background-color: white;
+        color: black;
+        border-color: white;
+    }
+    .form-selected{
+        border-color: grey !important;
+    }
+</style>
+<div class="container text-center mt-5 mb-5">
+    <div class="card">
+        <div class="row">
+            <div class="col">
+                <div class="d-flex align-items-start">
+                    <div class="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <button class="btn btn-dark mb-1 active" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Op1</button>
+                        <button class="btn btn-dark mb-1" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Op2</button>
+                        <button class="btn btn-dark mb-1" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Op3</button>
+                        <button class="btn btn-dark" id="v-pills-settings-tab" data-bs-toggle="pill" data-bs-target="#v-pills-settings" type="button" role="tab" aria-controls="v-pills-settings" aria-selected="false">Op4</button>
+                    </div>
+                    <div class="tab-content" id="v-pills-tabContent">
+                        <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">esta es la primera opcion</div>
+                        <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">esta es la segunda opcion</div>
+                        <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">esta es la tercera opcion</div>
+                        <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">esta es la cuarta opcion</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col text-start">
+                <h1>DoorMaid</h1>
+                <h2>$2,500.00</h2>
+                <p>
+                    Un timbre inteligente WiFi, envia audio y video al usuario mediante su aplicacion movil. Configuracion mediante Bluetooth. Funcionamiento a partir de tarjeta Raspberry Pi 3 
+                    Puede vincular mas de un dispocitivo a su cuenta.
+                </p>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h2>Comprar</h2>
+                    <p>Por el momento solo se puede comprar por unidad</p>
+                    <div class="container">
+                        <form>
+                            <select class="form-select mt-3" aria-label="Default select example" id="opcion">
+                                <option selected>Selecciona la opcion a comprar</option>
+                                <option value="1">Op1</option>
+                                <option value="2">Op2</option>
+                                <option value="3">Op3</option>
+                                <option value="4">Op4</option>
+                            </select>
+                            <button type="button" class="btn btn-outline-dark mb-4 mt-4" data-bs-toggle="modal" data-bs-target="#exampleModal" id="final">
+                                Finalizar compra
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Registro de datos del cliente</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form id="formulario" method="post" action="/producto/doormaid"></form>
+      </div>
+    </div>
+  </div>
+<script>
+    document.getElementById('final').addEventListener('click', ()=>
+    {
+        if(document.getElementById('opcion').value=="Selecciona la opcion a comprar")
+        {
+            document.getElementById('formulario').innerHTML=
+            `
+            <div class="alert alert-danger" role="alert">
+                No se selecciono ninguna opcion
+            </div>
+            `;
+            console.log(document.getElementById('opcion').value)
+        }
+        else
+        {
+            document.getElementById('formulario').innerHTML=
+            `
+            <div class="modal-body">
+                <input type="text" placeholder="Nombre y apellidos" class="form-control mb-3" name="nombre">
+                <input type="text" placeholder="Codigo postal" class="form-control mb-3" name="cp">
+                <input type="text" placeholder="Estado" class="form-control mb-3" name="estado">
+                <input type="text" placeholder="Municipio" class="form-control mb-3" name="municipio">
+                <input type="text" placeholder="Colonia" class="form-control mb-3" name="colonia">
+                <input type="text" placeholder="Calle" class="form-control mb-3" name="calle">
+                <input type="text" placeholder="Numero exterior" class="form-control mb-3" name="numExt">
+                <input type="text" placeholder="Numero interior" class="form-control mb-3" name="numInt">
+                <input type="tel" placeholder="Numero de contacto" class="form-control mb-3" name="tel">
+                <input type="email" placeholder="Correo electronico" class="form-control mb-3" name="email">
+                <textarea placeholder="Referencias" class="form-control" name="ref"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary" id="finalizar">Enviar datos</button>
+            </div>
+            `;
+        }
+    })
+</script>
+<%-include('templates/end.ejs')%>
